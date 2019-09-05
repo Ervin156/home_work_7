@@ -22,6 +22,7 @@
                 blockAlert.append(span);
                 li.innerHTML += string.value;
                 ul.appendChild(li);
+                names.push(string.value);
                 return;
             }, 0)
         };
