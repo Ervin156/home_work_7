@@ -14,6 +14,7 @@
             setTimeout(() => {
                 span.innerHTML += 'Имя есть в списке';
                 blockAlert.append(span);
+                string.value = '';
             }, 0);
             return;
         } else {
@@ -23,21 +24,27 @@
                 li.innerHTML += string.value;
                 ul.appendChild(li);
                 names.push(string.value);
+                string.value = '';
                 return;
             }, 0)
         };
+
     },
-    listUser: function (names) {
+    listUser: function (names, string) {
         ul.style.listStyle = 'none';
-        for (var i of names) {
-            var li = document.createElement('li');
-            li.innerHTML = i;
-            ul.appendChild(li);
-        }
-        block.append(ul);
+        ul.innerHTML = '';
+        setTimeout(() => {
+            for (var i of names) {
+                var li = document.createElement('li');
+                li.innerHTML = i;
+                ul.appendChild(li);
+            }
+            string.value = '';
+            block.append(ul);
+        }, 100);
     },
     clearBlock: function (string) {
-        ul.remove();
+        ul.innerHTML = '';
         string.value = '';
     },
     init: function (data, inputName) {
@@ -71,7 +78,7 @@
         };
 
         this.btnList.onclick = () => {
-            this.listUser(data);
+            this.listUser(data, inputName);
         };
 
         this.btnClear.onclick = () => {
