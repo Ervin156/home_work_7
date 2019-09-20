@@ -1,4 +1,4 @@
-﻿var userManager = {
+﻿const userManager = {
   data: ["Beavis", "Butthead", "Cartman", "Mark", "Bob"],
 
   btnFind: document.createElement("button"),
@@ -6,8 +6,8 @@
   btnClear: document.createElement("button"),
 
   findUser: function(names, string) {
-    var li = document.createElement("li");
-    var span = document.createElement("span");
+    const li = document.createElement("li");
+    const span = document.createElement("span");
 
     if (names.indexOf(string.value) !== -1) {
       setTimeout(() => {
@@ -30,8 +30,8 @@
   },
   listUser: function(names, string) {
     ul.style.listStyle = "none";
-    for (var i of names) {
-      var li = document.createElement("li");
+    for (let i of names) {
+      const li = document.createElement("li");
       li.innerHTML = i;
       ul.append(li);
     }
@@ -71,11 +71,12 @@
     };
 
     this.btnList.onclick = () => {
-        this.clearBlock(inputName);
+      this.clearBlock(inputName);
 
-        setTimeout(() => {
-            this.listUser(data, inputName);
-          }, 100);    };
+      setTimeout(() => {
+        this.listUser(data, inputName);
+      }, 100);
+    };
 
     this.btnClear.onclick = () => {
       this.clearBlock(inputName);
